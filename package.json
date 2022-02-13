@@ -1,0 +1,36 @@
+{
+	"name": "tailwindcss-override",
+	"version": "0.1.0",
+	"description": "TailwindCSS plugin that provides an `o:` variant, allowing Tailwind classes used in a component to be overridden in a component instance.",
+	"main": "index.js",
+	"files": [
+		"README.md",
+		"CHANGELOG.md",
+		"index.js"
+	],
+	"scripts": {},
+	"author": "Richard S. Tallent, II",
+	"license": "MIT",
+	"keywords": [
+		"tailwindcss",
+		"default",
+		"component",
+		"CSS"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/richardtallent/tailwindcss-override"
+	},
+	"homepage": "https://github.com/richardtallent/tailwindcss-override/tree/main/#readme",
+	"peerDependencies": {
+		"tailwindcss": "^3.0.22"
+	},
+	"prettier": {
+		"useTabs": true,
+		"semi": false,
+		"singleQuote": false,
+		"bracketSpacing": true,
+		"trailingComma": "es5",
+		"printWidth": 180
+	}
+}
