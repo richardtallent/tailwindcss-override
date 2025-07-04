@@ -1,22 +1,24 @@
 # tailwindcss-override
 
-## What does this plugin do?
+## What does this do?
 
-This plugin adds a new `o:` variant to your Tailwind CSS configuration. Any class using this variant will _override_ other Tailwind CSS classes.
+This provides a new `o:` variant for your Tailwind CSS configuration. Any class using this variant will _override_ other Tailwind CSS classes.
 
-The purpose of this plugin is to allow you to use Tailwind CSS classes to create components with reasonable default styles, while still allowing the component _user_ to override those styles with Tailwind CSS (adding only the `o:` prefix).
+The purpose is to allow you to use Tailwind CSS classes to create components with reasonable default styles, while still allowing the component _user_ to override those styles with Tailwind CSS (adding only the `o:` prefix).
 
 There's no run-time JavaScript involved, this is all pure CSS.
 
 ## How do I use it?
 
-### 1. Install
+### Tailwind CSS 3
+
+#### 1. Install
 
 ```sh
 npm install tailwindcss-override
 ```
 
-### 2. Add this to your `tailwindcss.config` file in the `module.exports` object
+#### 2. Add this to your `tailwindcss.config` file in the `module.exports` object
 
 ```js
 plugins: [
@@ -24,7 +26,19 @@ plugins: [
 ],
 ```
 
-### 3. Create a component with a default style
+### Tailwind CSS 4
+
+No plugin installation needed! Just add this CSS variant to your stylesheet:
+
+```css
+@custom-variant o (&:not([z]));
+```
+
+Note: In Tailwind CSS 4, JavaScript plugins are no longer supported. Instead, you add custom variants directly in your CSS using the `@custom-variant` directive.
+
+### Usage Example (Works with both Tailwind 3 & 4)
+
+#### 1. Create a component with a default style
 
 ```HTML
 <!-- MyButton.vue -->
@@ -33,7 +47,7 @@ plugins: [
 </template>
 ```
 
-### 4. Override as needed for your component instances
+#### 2. Override as needed for your component instances
 
 ```HTML
 <MyButton>My Blue Button</MyButton>
@@ -52,7 +66,15 @@ plugins: [
 
 ## How does it work?
 
-When you use `o:bg-red-400`, a CSS rule is created for the selector `o\:bg-red-400:not([z])` to match it. The `:not([z])` is tacked on to force a higher specificity above a normal class selector (_i.e._, above other Tailwind CSS classes). The `:not([z])` selector was chosen because it (a) matche anything, (b) raises selectivity, and (c) is compact.
+When you use `o:bg-red-400`, a CSS rule is created for the selector `o\:bg-red-400:not([z])` to match it. The `:not([z])` is tacked on to force a higher specificity above a normal class selector (_i.e._, above other Tailwind CSS classes). The `:not([z])` selector was chosen because it (a) matches anything, (b) raises selectivity, and (c) is compact.
+
+## Migrating from Tailwind CSS 3 to 4
+
+If you're upgrading from Tailwind CSS 3 to 4:
+
+1. **Remove the plugin** from your `tailwind.config.js`
+2. **Add the CSS variant** to your main CSS file: `@custom-variant o (&:not([z]));`
+3. **Your HTML stays the same** - all existing `o:` classes continue to work
 
 ## Why did I create this plugin?
 
