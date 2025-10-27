@@ -1,6 +1,6 @@
 {
 	"name": "tailwindcss-override",
-	"version": "0.1.0",
+	"version": "1.0.1",
 	"description": "TailwindCSS `o:` variant for overriding component styles. Provides a plugin for Tailwind 3, and instructions for Tailwind 4.",
 	"main": "index.js",
 	"files": [
